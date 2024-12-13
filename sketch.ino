@@ -75,20 +75,15 @@ void loop() {
   int ldrstatus=analogRead(ldrPin);
 
   if(ldrstatus>=threshold){
+    digitalWrite(led_vermelho, LOW);
+    digitalWrite(led_verde, LOW);
     digitalWrite(led_amarelo, LOW);
     delay(1000);
     digitalWrite(led_amarelo, HIGH);
     delay(1000);
     Serial.print("Está noite");
     Serial.println(ldrstatus);
-    if (digitalRead(buttonPin == HIGH) && digitalRead(led_vermelho == HIGH)) {
-      Serial.print("Apertado");
-      digitalWrite(led_vermelho, HIGH);
-      delay(1000);
-      digitalWrite(led_vermelho, LOW);
-      digitalWrite(led_verde, HIGH);
-      delay(2000);
-    }
+
 
   }else{
     Serial.print("Está dia");
@@ -104,4 +99,12 @@ void loop() {
     digitalWrite(led_vermelho, HIGH);
     delay(5000);
   }
+  if (digitalRead(buttonPin == HIGH) && digitalRead(led_vermelho == HIGH)) {
+    Serial.print("Apertado");
+    digitalWrite(led_vermelho, HIGH);
+    delay(1000);
+    digitalWrite(led_vermelho, LOW);
+    digitalWrite(led_verde, HIGH);
+    delay(2000);
+    }
 }
